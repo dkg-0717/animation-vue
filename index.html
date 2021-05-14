@@ -15,14 +15,14 @@
     <div class="edit-container">
       <div class="html-tags">
         <!-- <pre>{{ gsapCode }}</pre> -->
-        <p class="lorem">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, aliquid dicta libero nostrum
-          minus
-          delectus
-          laboriosam. Debitis in quos optio ipsum quam, cupiditate quasi ab numquam dolore eligendi commodi dignissimos!
-        </p>
+        <component v-for="(element,index) in elements" :is="element.el" :style="{}" @click="currentItem(index)">
+          {{element.text}}
+        </component>
       </div>
       <div class="animation-code">
-        <textarea v-model="gsapCode" name="" id="" cols="30" rows="10"></textarea>
+        <template v-for="(element,index) in elements">
+          <textarea v-model="element.animation" v-if="textIndex == index" cols="30" rows="10"></textarea>
+        </template>
         <button @click="showCode">show code</button>
       </div>
     </div>
